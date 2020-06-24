@@ -5,6 +5,7 @@ target 'TaxovichkofWeather' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 pod 'SwiftLint'
+pod 'RealmSwift'
   # Pods for TaxovichkofWeather
 
   target 'TaxovichkofWeatherTests' do

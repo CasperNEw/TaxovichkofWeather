@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,10 +11,24 @@
 		AA60B0094C0AC22C1FD9523A /* Pods_TaxovichkofWeather.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91C5BAC961BE580B64A319E7 /* Pods_TaxovichkofWeather.framework */; };
 		DA446CCB24A1FA16009A099F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA446CCA24A1FA16009A099F /* AppDelegate.swift */; };
 		DA446CCD24A1FA16009A099F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA446CCC24A1FA16009A099F /* SceneDelegate.swift */; };
-		DA446CCF24A1FA16009A099F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA446CCE24A1FA16009A099F /* ViewController.swift */; };
+		DA446CCF24A1FA16009A099F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA446CCE24A1FA16009A099F /* DetailViewController.swift */; };
 		DA446CD424A1FA19009A099F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA446CD324A1FA19009A099F /* Assets.xcassets */; };
 		DA446CD724A1FA19009A099F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA446CD524A1FA19009A099F /* LaunchScreen.storyboard */; };
 		DA446CE224A1FA1A009A099F /* TaxovichkofWeatherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA446CE124A1FA1A009A099F /* TaxovichkofWeatherTests.swift */; };
+		DA446CEF24A20154009A099F /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA446CEE24A20154009A099F /* DetailView.swift */; };
+		DA446CF124A2025B009A099F /* ViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA446CF024A2025B009A099F /* ViewControllerFactory.swift */; };
+		DA446CF424A20852009A099F /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA446CF324A20852009A099F /* NetworkService.swift */; };
+		DA446CF724A208A2009A099F /* OpenWeatherMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA446CF624A208A2009A099F /* OpenWeatherMap.swift */; };
+		DA446CFA24A21167009A099F /* CityWeatherFromServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA446CF924A21167009A099F /* CityWeatherFromServer.swift */; };
+		DA446CFC24A21525009A099F /* CityWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA446CFB24A21525009A099F /* CityWeather.swift */; };
+		DA446CFE24A21AEA009A099F /* DetailModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA446CFD24A21AEA009A099F /* DetailModelController.swift */; };
+		DA446D0024A21CF2009A099F /* FavoriteCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA446CFF24A21CF2009A099F /* FavoriteCity.swift */; };
+		DA446D0224A226F2009A099F /* CurrentCityWeatherFromServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA446D0124A226F2009A099F /* CurrentCityWeatherFromServer.swift */; };
+		DA446D0924A247A2009A099F /* FavoriteCityRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA446D0824A247A2009A099F /* FavoriteCityRealm.swift */; };
+		DA446D0B24A2493C009A099F /* FavoriteCityRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA446D0A24A2493C009A099F /* FavoriteCityRepository.swift */; };
+		DA446D0D24A24EC2009A099F /* CityWeatherRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA446D0C24A24EC2009A099F /* CityWeatherRealm.swift */; };
+		DA446D0F24A25A6E009A099F /* CityWeatherRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA446D0E24A25A6E009A099F /* CityWeatherRepository.swift */; };
+		DA446D1224A357DD009A099F /* RealmError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA446D1124A357DC009A099F /* RealmError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,13 +50,27 @@
 		DA446CC724A1FA16009A099F /* TaxovichkofWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaxovichkofWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA446CCA24A1FA16009A099F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DA446CCC24A1FA16009A099F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		DA446CCE24A1FA16009A099F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		DA446CCE24A1FA16009A099F /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		DA446CD324A1FA19009A099F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DA446CD624A1FA19009A099F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DA446CD824A1FA19009A099F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DA446CDD24A1FA1A009A099F /* TaxovichkofWeatherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TaxovichkofWeatherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA446CE124A1FA1A009A099F /* TaxovichkofWeatherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxovichkofWeatherTests.swift; sourceTree = "<group>"; };
 		DA446CE324A1FA1A009A099F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DA446CEE24A20154009A099F /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		DA446CF024A2025B009A099F /* ViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerFactory.swift; sourceTree = "<group>"; };
+		DA446CF324A20852009A099F /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		DA446CF624A208A2009A099F /* OpenWeatherMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenWeatherMap.swift; sourceTree = "<group>"; };
+		DA446CF924A21167009A099F /* CityWeatherFromServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityWeatherFromServer.swift; sourceTree = "<group>"; };
+		DA446CFB24A21525009A099F /* CityWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityWeather.swift; sourceTree = "<group>"; };
+		DA446CFD24A21AEA009A099F /* DetailModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailModelController.swift; sourceTree = "<group>"; };
+		DA446CFF24A21CF2009A099F /* FavoriteCity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCity.swift; sourceTree = "<group>"; };
+		DA446D0124A226F2009A099F /* CurrentCityWeatherFromServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentCityWeatherFromServer.swift; sourceTree = "<group>"; };
+		DA446D0824A247A2009A099F /* FavoriteCityRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCityRealm.swift; sourceTree = "<group>"; };
+		DA446D0A24A2493C009A099F /* FavoriteCityRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCityRepository.swift; sourceTree = "<group>"; };
+		DA446D0C24A24EC2009A099F /* CityWeatherRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityWeatherRealm.swift; sourceTree = "<group>"; };
+		DA446D0E24A25A6E009A099F /* CityWeatherRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityWeatherRepository.swift; sourceTree = "<group>"; };
+		DA446D1124A357DC009A099F /* RealmError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmError.swift; sourceTree = "<group>"; };
 		E31C99AD0F97B564022B2A90 /* Pods-TaxovichkofWeather.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaxovichkofWeather.debug.xcconfig"; path = "Target Support Files/Pods-TaxovichkofWeather/Pods-TaxovichkofWeather.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -111,7 +139,12 @@
 			children = (
 				DA446CCA24A1FA16009A099F /* AppDelegate.swift */,
 				DA446CCC24A1FA16009A099F /* SceneDelegate.swift */,
-				DA446CCE24A1FA16009A099F /* ViewController.swift */,
+				DA446CF024A2025B009A099F /* ViewControllerFactory.swift */,
+				DA446CED24A200FA009A099F /* UI */,
+				DA446CF224A207F6009A099F /* Services */,
+				DA446CF824A21119009A099F /* Model */,
+				DA446D0424A246B1009A099F /* Database */,
+				DA446D1024A357C1009A099F /* Errors */,
 				DA446CD324A1FA19009A099F /* Assets.xcassets */,
 				DA446CD524A1FA19009A099F /* LaunchScreen.storyboard */,
 				DA446CD824A1FA19009A099F /* Info.plist */,
@@ -128,6 +161,95 @@
 			path = TaxovichkofWeatherTests;
 			sourceTree = "<group>";
 		};
+		DA446CED24A200FA009A099F /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				DA446CCE24A1FA16009A099F /* DetailViewController.swift */,
+				DA446CEE24A20154009A099F /* DetailView.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		DA446CF224A207F6009A099F /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				DA446CF524A20867009A099F /* NetworkService */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		DA446CF524A20867009A099F /* NetworkService */ = {
+			isa = PBXGroup;
+			children = (
+				DA446CF624A208A2009A099F /* OpenWeatherMap.swift */,
+				DA446CF324A20852009A099F /* NetworkService.swift */,
+			);
+			path = NetworkService;
+			sourceTree = "<group>";
+		};
+		DA446CF824A21119009A099F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DA446D0324A23D5C009A099F /* ModelController */,
+				DA446D0124A226F2009A099F /* CurrentCityWeatherFromServer.swift */,
+				DA446CF924A21167009A099F /* CityWeatherFromServer.swift */,
+				DA446CFF24A21CF2009A099F /* FavoriteCity.swift */,
+				DA446CFB24A21525009A099F /* CityWeather.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		DA446D0324A23D5C009A099F /* ModelController */ = {
+			isa = PBXGroup;
+			children = (
+				DA446CFD24A21AEA009A099F /* DetailModelController.swift */,
+			);
+			path = ModelController;
+			sourceTree = "<group>";
+		};
+		DA446D0424A246B1009A099F /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				DA446D0524A246C9009A099F /* Realm */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
+		DA446D0524A246C9009A099F /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				DA446D0724A246D4009A099F /* RealmRepository */,
+				DA446D0624A246CE009A099F /* RealmModel */,
+			);
+			path = Realm;
+			sourceTree = "<group>";
+		};
+		DA446D0624A246CE009A099F /* RealmModel */ = {
+			isa = PBXGroup;
+			children = (
+				DA446D0824A247A2009A099F /* FavoriteCityRealm.swift */,
+				DA446D0C24A24EC2009A099F /* CityWeatherRealm.swift */,
+			);
+			path = RealmModel;
+			sourceTree = "<group>";
+		};
+		DA446D0724A246D4009A099F /* RealmRepository */ = {
+			isa = PBXGroup;
+			children = (
+				DA446D0A24A2493C009A099F /* FavoriteCityRepository.swift */,
+				DA446D0E24A25A6E009A099F /* CityWeatherRepository.swift */,
+			);
+			path = RealmRepository;
+			sourceTree = "<group>";
+		};
+		DA446D1024A357C1009A099F /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				DA446D1124A357DC009A099F /* RealmError.swift */,
+			);
+			path = Errors;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -140,6 +262,7 @@
 				DA446CC424A1FA16009A099F /* Frameworks */,
 				DA446CC524A1FA16009A099F /* Resources */,
 				DA446CEC24A1FB92009A099F /* ShellScript */,
+				618256B2B1109311E611EC91 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -227,6 +350,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		618256B2B1109311E611EC91 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TaxovichkofWeather/Pods-TaxovichkofWeather-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TaxovichkofWeather/Pods-TaxovichkofWeather-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TaxovichkofWeather/Pods-TaxovichkofWeather-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		7E064A2AB2FE4531FA531964 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -295,9 +435,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA446CCF24A1FA16009A099F /* ViewController.swift in Sources */,
+				DA446CFC24A21525009A099F /* CityWeather.swift in Sources */,
+				DA446CCF24A1FA16009A099F /* DetailViewController.swift in Sources */,
+				DA446CF124A2025B009A099F /* ViewControllerFactory.swift in Sources */,
+				DA446D0224A226F2009A099F /* CurrentCityWeatherFromServer.swift in Sources */,
+				DA446D0D24A24EC2009A099F /* CityWeatherRealm.swift in Sources */,
+				DA446CEF24A20154009A099F /* DetailView.swift in Sources */,
 				DA446CCB24A1FA16009A099F /* AppDelegate.swift in Sources */,
+				DA446CF724A208A2009A099F /* OpenWeatherMap.swift in Sources */,
+				DA446D0924A247A2009A099F /* FavoriteCityRealm.swift in Sources */,
+				DA446CFE24A21AEA009A099F /* DetailModelController.swift in Sources */,
+				DA446D0024A21CF2009A099F /* FavoriteCity.swift in Sources */,
+				DA446D1224A357DD009A099F /* RealmError.swift in Sources */,
+				DA446D0B24A2493C009A099F /* FavoriteCityRepository.swift in Sources */,
+				DA446CFA24A21167009A099F /* CityWeatherFromServer.swift in Sources */,
+				DA446CF424A20852009A099F /* NetworkService.swift in Sources */,
 				DA446CCD24A1FA16009A099F /* SceneDelegate.swift in Sources */,
+				DA446D0F24A25A6E009A099F /* CityWeatherRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
