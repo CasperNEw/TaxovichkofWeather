@@ -29,6 +29,8 @@
 		DA446D0D24A24EC2009A099F /* CityWeatherRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA446D0C24A24EC2009A099F /* CityWeatherRealm.swift */; };
 		DA446D0F24A25A6E009A099F /* CityWeatherRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA446D0E24A25A6E009A099F /* CityWeatherRepository.swift */; };
 		DA446D1224A357DD009A099F /* RealmError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA446D1124A357DC009A099F /* RealmError.swift */; };
+		DA446D1524A38276009A099F /* DetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA446D1324A38276009A099F /* DetailTableViewCell.swift */; };
+		DA446D1624A38276009A099F /* DetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA446D1424A38276009A099F /* DetailTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +73,8 @@
 		DA446D0C24A24EC2009A099F /* CityWeatherRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityWeatherRealm.swift; sourceTree = "<group>"; };
 		DA446D0E24A25A6E009A099F /* CityWeatherRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityWeatherRepository.swift; sourceTree = "<group>"; };
 		DA446D1124A357DC009A099F /* RealmError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmError.swift; sourceTree = "<group>"; };
+		DA446D1324A38276009A099F /* DetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewCell.swift; sourceTree = "<group>"; };
+		DA446D1424A38276009A099F /* DetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailTableViewCell.xib; sourceTree = "<group>"; };
 		E31C99AD0F97B564022B2A90 /* Pods-TaxovichkofWeather.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaxovichkofWeather.debug.xcconfig"; path = "Target Support Files/Pods-TaxovichkofWeather/Pods-TaxovichkofWeather.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -166,6 +170,7 @@
 			children = (
 				DA446CCE24A1FA16009A099F /* DetailViewController.swift */,
 				DA446CEE24A20154009A099F /* DetailView.swift */,
+				DA446D1724A3827B009A099F /* Cell */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -248,6 +253,15 @@
 				DA446D1124A357DC009A099F /* RealmError.swift */,
 			);
 			path = Errors;
+			sourceTree = "<group>";
+		};
+		DA446D1724A3827B009A099F /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				DA446D1324A38276009A099F /* DetailTableViewCell.swift */,
+				DA446D1424A38276009A099F /* DetailTableViewCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -336,6 +350,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA446CD724A1FA19009A099F /* LaunchScreen.storyboard in Resources */,
+				DA446D1624A38276009A099F /* DetailTableViewCell.xib in Resources */,
 				DA446CD424A1FA19009A099F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -435,6 +450,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA446D1524A38276009A099F /* DetailTableViewCell.swift in Sources */,
 				DA446CFC24A21525009A099F /* CityWeather.swift in Sources */,
 				DA446CCF24A1FA16009A099F /* DetailViewController.swift in Sources */,
 				DA446CF124A2025B009A099F /* ViewControllerFactory.swift in Sources */,

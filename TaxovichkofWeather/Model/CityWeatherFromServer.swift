@@ -18,7 +18,7 @@ struct CityWeatherFromServer: Codable {
 
     enum CodingKeys: String, CodingKey {
         case lat, lon, timezone
-        case timezoneOffset
+        case timezoneOffset = "timezone_offset"
         case current, daily
     }
 }
@@ -64,12 +64,12 @@ struct Current: Codable {
     enum CodingKeys: String, CodingKey {
         case timeData = "dt"
         case sunrise, sunset, temp
-        case feelsLike
+        case feelsLike = "feels_like"
         case pressure, humidity
-        case dewPoint
+        case dewPoint = "dew_point"
         case uvi, clouds, visibility
-        case windSpeed
-        case windDeg
+        case windSpeed = "wind_speed"
+        case windDeg = "wind_deg"
         case weather
     }
 }
@@ -90,11 +90,11 @@ struct Daily: Codable {
     enum CodingKeys: String, CodingKey {
         case timeData = "dt"
         case sunrise, sunset, temp
-        case feelsLike
+        case feelsLike = "feels_like"
         case pressure, humidity
-        case dewPoint
-        case windSpeed
-        case windDeg
+        case dewPoint = "dew_point"
+        case windSpeed = "wind_speed"
+        case windDeg = "wind_deg"
         case weather, clouds, uvi, rain
     }
 }

@@ -9,14 +9,17 @@
 import Foundation
 
 enum RealmError: Error {
+    case createFavoriteError
     case findFavoriteError
 }
 
 extension RealmError: LocalizedError {
     var errorDescription: String? {
         switch self {
+        case .createFavoriteError:
+            return "Error creating a list of favorite cities in the database"
         case .findFavoriteError:
-            return "Error finding your favorite city in the database. Reinstall the application. If reappeared, contact software developer"
+            return "Error finding your favorite city in the database. If reappeared, contact software developer"
         }
     }
 }

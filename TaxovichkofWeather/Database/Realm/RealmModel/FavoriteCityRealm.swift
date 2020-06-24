@@ -15,7 +15,7 @@ class FavoriteCityRealm: Object {
     @objc dynamic var longitude = 0.0
     @objc dynamic var latitude = 0.0
     @objc dynamic var currentWeather: CityWeatherRealm?
-    @objc dynamic var dailyWeather: [CityWeatherRealm] = []
+    var dailyWeather: [CityWeatherRealm] = []
 
     override static func primaryKey() -> String? {
         return "cityId"

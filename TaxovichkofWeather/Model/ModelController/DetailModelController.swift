@@ -9,14 +9,13 @@
 import Foundation
 
 protocol DetailModelControllerProtocol {
-    func createFavoriteCities(completion: @escaping (Error?) -> Void)
+    func getFavoriteCities(completion: @escaping (Result<[FavoriteCity], Error>) -> Void)
 }
 
-class DetailModelController {
+class DetailModelController: DetailModelControllerProtocol {
 
     private let networkService: NetworkServiceProtocol
     private var database: FavoriteCitySource
-    private var favoriteCities: [FavoriteCity]?
 
     required init(networkService: NetworkServiceProtocol,
                   database: FavoriteCitySource) {
@@ -24,7 +23,58 @@ class DetailModelController {
         self.database = database
     }
 
-    func createFavoriteCities(completion: @escaping (Error?) -> Void) {
+    func getFavoriteCities(completion: @escaping (Result<[FavoriteCity], Error>) -> Void) {
+
+        createFavoriteCities { error in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+        }
+
+        do {
+            var favorites = try database.getAllFavoritesCity()
+            if favorites.first?.currentWeather == nil {
+                let workItem = DispatchWorkItem {
+                    self.getWeatherOfFavoriteCitiesFromApi { error in
+                        if let error = error {
+                            DispatchQueue.main.async {
+                                completion(.failure(error))
+                                return
+                            }
+                        }
+                    }
+                }
+                workItem.notify(queue: DispatchQueue.main) {
+                    do {
+                        favorites = try self.database.getAllFavoritesCity()
+                        completion(.success(favorites.map { $0.toModel() }))
+                    } catch {
+                        completion(.failure(error))
+                        return
+                    }
+                }
+                DispatchQueue.global().async(execute: workItem)
+            } else {
+                completion(.success(favorites.map { $0.toModel() }))
+                return
+            }
+        } catch {
+            completion(.failure(error))
+        }
+    }
+
+    private func createFavoriteCities(completion: @escaping (Error?) -> Void) {
+
+        do {
+            if try database.getAllFavoritesCity().count > 0 {
+                completion(nil)
+                return
+            }
+        } catch {
+            completion(error)
+        }
+
         let saintP = FavoriteCity(cityId: 498817, name: "Санкт-Петербург",
                                   longitude: 30.26, latitude: 59.89,
                                   currentWeather: nil, dailyWeather: [])
@@ -36,7 +86,7 @@ class DetailModelController {
             try database.addFavorite(city: moscow)
             completion(nil)
         } catch {
-            completion(error)
+            completion(RealmError.createFavoriteError)
         }
     }
 
@@ -65,15 +115,6 @@ class DetailModelController {
             }
         } catch {
             completion(error)
-        }
-    }
-
-    private func getFavoriteCitiesFromDatabase() {
-        do {
-            let favorites = try database.getAllFavoritesCity()
-            favoriteCities = favorites.map { $0.toModel() }
-        } catch {
-            print(error)
         }
     }
 }

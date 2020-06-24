@@ -11,7 +11,8 @@ import Foundation
 protocol NetworkServiceProtocol {
 
     func findCityWeatherBy(name: String, completion: @escaping (Result<CurrentCityWeatherFromServer, Error>) -> Void)
-    func getCityWeather(latitude: String, longitude: String, completion: @escaping (Result<CityWeatherFromServer, Error>) -> Void)
+    func getCityWeather(latitude: String, longitude: String,
+                        completion: @escaping (Result<CityWeatherFromServer, Error>) -> Void)
 }
 
 class NetworkService: NetworkServiceProtocol {
@@ -52,7 +53,7 @@ class NetworkService: NetworkServiceProtocol {
         component.queryItems = urlQueryItem
 
         guard let url = component.url else { return }
-        
+
         let task = URLSession.shared.dataTask(with: url) { (data, _, error) in
             if let error = error {
                 DispatchQueue.main.async {

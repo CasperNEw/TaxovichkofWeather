@@ -25,9 +25,5 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let navigationController = UINavigationController(rootViewController: viewController)
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
-
-        let config = Realm.Configuration(schemaVersion: 1)
-        Realm.Configuration.defaultConfiguration = config
-        print("[Logging] Realm database config path: ", config.fileURL as Any)
     }
 }

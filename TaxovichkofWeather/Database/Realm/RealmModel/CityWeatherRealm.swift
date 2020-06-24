@@ -17,10 +17,6 @@ class CityWeatherRealm: Object {
     @objc dynamic var temp = 0.0
     @objc dynamic var writeUp = ""
 
-    override static func primaryKey() -> String? {
-        return "forecastDate"
-    }
-
     func toModel() -> CityWeather {
         return CityWeather(cityId: cityId, currentDate: currentDate,
                            forecastDate: forecastDate, icon: icon,
