@@ -1,5 +1,5 @@
 //
-//  NetworkService.swift
+//  NetworkApiService.swift
 //  TaxovichkofWeather
 //
 //  Created by Дмитрий Константинов on 23.06.2020.
@@ -8,14 +8,14 @@
 
 import Foundation
 
-protocol NetworkServiceProtocol {
+protocol NetworkApiServiceProtocol {
 
     func findCityWeatherBy(name: String, completion: @escaping (Result<CurrentCityWeatherFromServer, Error>) -> Void)
     func getCityWeather(latitude: String, longitude: String,
                         completion: @escaping (Result<CityWeatherFromServer, Error>) -> Void)
 }
 
-class NetworkService: NetworkServiceProtocol {
+class NetworkApiService: NetworkApiServiceProtocol {
 
     let key = OpenWeatherMap.profile.getApiKey()
 

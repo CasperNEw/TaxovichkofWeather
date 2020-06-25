@@ -16,7 +16,7 @@ class DetailViewController: UIViewController {
     init(view: UIView) {
         super.init(nibName: nil, bundle: nil)
         self.view = view
-        setup()
+//        setup()
     }
 
     // MARK: hack for canvas SwiftUI
@@ -30,7 +30,7 @@ class DetailViewController: UIViewController {
     }
 
     private func setup() {
-        let networkService = NetworkService()
+        let networkService = NetworkApiService()
         let database = FavoriteCityRealmRepository()
         modelController = DetailModelController(networkService: networkService, database: database)
         modelController?.getFavoriteCities { result in

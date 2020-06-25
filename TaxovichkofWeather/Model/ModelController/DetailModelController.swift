@@ -9,18 +9,35 @@
 import Foundation
 
 protocol DetailModelControllerProtocol {
+    func updateAndGetFavoriteCities(completion: @escaping (Result<[FavoriteCity], Error>) -> Void)
     func getFavoriteCities(completion: @escaping (Result<[FavoriteCity], Error>) -> Void)
 }
 
 class DetailModelController: DetailModelControllerProtocol {
 
-    private let networkService: NetworkServiceProtocol
+    private let networkService: NetworkApiServiceProtocol
     private var database: FavoriteCitySource
 
-    required init(networkService: NetworkServiceProtocol,
+    required init(networkService: NetworkApiServiceProtocol,
                   database: FavoriteCitySource) {
         self.networkService = networkService
         self.database = database
+    }
+
+    func updateAndGetFavoriteCities(completion: @escaping (Result<[FavoriteCity], Error>) -> Void) {
+        getWeatherOfFavoriteCitiesFromApi { error in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+        }
+        do {
+            let favorites = try database.getAllFavoritesCity()
+            completion(.success(favorites.map { $0.toModel() }))
+        } catch {
+            completion(.failure(error))
+            return
+        }
     }
 
     func getFavoriteCities(completion: @escaping (Result<[FavoriteCity], Error>) -> Void) {

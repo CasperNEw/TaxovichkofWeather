@@ -30,8 +30,9 @@ class FavoriteCityRealmRepository: FavoriteCitySource {
         do {
             let realm = try Realm()
             let favorites = realm.objects(FavoriteCityRealm.self)
-            let favoritesVerifiedData = checkForExpiredData(cities: favorites)
+            let favoritesVerifiedData = try checkForExpiredData(cities: favorites)
             try realm.write {
+                favoritesVerifiedData.forEach { $0.cache.removeAll() }
                 realm.add(favoritesVerifiedData, update: .modified)
             }
             return favoritesVerifiedData
@@ -64,7 +65,8 @@ class FavoriteCityRealmRepository: FavoriteCitySource {
             }
             try realm.write {
                 favorite.currentWeather = CityWeatherRealm().fromModel(optWeather: current)
-                favorite.dailyWeather = daily.map { CityWeatherRealm().fromModel(weather: $0) }
+                favorite.dailyWeather.removeAll()
+                favorite.dailyWeather.append(objectsIn: daily.map { CityWeatherRealm().fromModel(weather: $0) })
                 realm.add(favorite, update: .modified)
             }
         } catch {
@@ -87,19 +89,39 @@ class FavoriteCityRealmRepository: FavoriteCitySource {
 // MARK: work with expired data
 extension FavoriteCityRealmRepository {
 
-    func checkForExpiredData(cities: Results<FavoriteCityRealm>) -> Results<FavoriteCityRealm> {
+    func checkForExpiredData(cities: Results<FavoriteCityRealm>) throws -> Results<FavoriteCityRealm> {
 
-        cities.forEach { city in
+        let checkedCities = cities
+        try checkedCities.forEach { city in
             if let currentWeather = city.currentWeather {
                 if currentWeather.forecastDate < validCurrentTime {
-                    city.currentWeather = nil
+                    do {
+                        let realm = try Realm()
+                        try realm.write {
+                            city.currentWeather = nil
+                        }
+                    } catch {
+                        throw RealmError.expiredDataError
+                    }
                 } else {
                     return
                 }
             }
-            city.dailyWeather = city.dailyWeather.filter { $0.forecastDate >= validDailyTime }
+            let daily = city.dailyWeather.filter("forecastDate >= %@", validDailyTime)
+            do {
+                let realm = try Realm()
+                try realm.write {
+                    city.cache.append(objectsIn: daily)
+                    realm.add(city, update: .modified)
+                    city.dailyWeather.removeAll()
+                    city.dailyWeather.append(objectsIn: city.cache)
+                    realm.add(city, update: .modified)
+                }
+            } catch {
+                throw RealmError.expiredDataError
+            }
         }
-        return cities
+        return checkedCities
     }
 
     private func getValidCurrentUnixTime() -> Int {

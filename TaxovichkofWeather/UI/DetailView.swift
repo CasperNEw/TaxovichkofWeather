@@ -67,6 +67,7 @@ class DetailView: UIView {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.backgroundColor = .yellow
         tableView.tableFooterView = UIView()
+        tableView.allowsSelection = false
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "DetailTableViewCell", bundle: nil),
