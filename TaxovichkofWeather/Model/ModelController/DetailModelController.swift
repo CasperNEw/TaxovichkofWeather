@@ -11,6 +11,7 @@ import Foundation
 protocol DetailModelControllerProtocol {
     func updateAndGetFavoriteCities(completion: @escaping (Result<[FavoriteCity], Error>) -> Void)
     func getFavoriteCities(completion: @escaping (Result<[FavoriteCity], Error>) -> Void)
+    func createURLStringForIcon(icon: String) -> String
 }
 
 class DetailModelController: DetailModelControllerProtocol {
@@ -79,6 +80,10 @@ class DetailModelController: DetailModelControllerProtocol {
         } catch {
             completion(.failure(error))
         }
+    }
+
+    func createURLStringForIcon(icon: String) -> String {
+        return networkService.createURLStringForIcon(icon: icon)
     }
 
     private func createFavoriteCities(completion: @escaping (Error?) -> Void) {

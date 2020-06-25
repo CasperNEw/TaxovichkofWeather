@@ -6,6 +6,8 @@ target 'TaxovichkofWeather' do
   use_frameworks!
 pod 'SwiftLint'
 pod 'RealmSwift'
+pod 'SDWebImage'
+pod 'GoogleMaps'
   # Pods for TaxovichkofWeather
 
   target 'TaxovichkofWeatherTests' do

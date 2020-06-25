@@ -13,6 +13,7 @@ protocol NetworkApiServiceProtocol {
     func findCityWeatherBy(name: String, completion: @escaping (Result<CurrentCityWeatherFromServer, Error>) -> Void)
     func getCityWeather(latitude: String, longitude: String,
                         completion: @escaping (Result<CityWeatherFromServer, Error>) -> Void)
+    func createURLStringForIcon(icon: String) -> String
 }
 
 class NetworkApiService: NetworkApiServiceProtocol {
@@ -41,6 +42,10 @@ class NetworkApiService: NetworkApiServiceProtocol {
                          URLQueryItem(name: "appid", value: key)]
 
         requestServer(urlQueryItem: queryItem) { completion($0) }
+    }
+
+    func createURLStringForIcon(icon: String) -> String {
+        return "https://openweathermap.org/img/wn/" + icon + "@2x.png"
     }
 
     private func requestServer<T: Decodable>(urlQueryItem: [URLQueryItem],

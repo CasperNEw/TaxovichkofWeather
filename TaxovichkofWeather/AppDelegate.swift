@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import GoogleMaps
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,6 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let config = Realm.Configuration(schemaVersion: 1)
         Realm.Configuration.defaultConfiguration = config
         print("[Logging] Realm database config path: ", config.fileURL as Any)
+
+        GMSServices.provideAPIKey("AIzaSyA5xYn2TYUgVi1pygU-FGtDJt9VWwIU6lk")
 
         return true
     }

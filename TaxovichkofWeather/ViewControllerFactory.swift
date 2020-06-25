@@ -12,8 +12,19 @@ class ViewControllerFactory {
 
     func makeDetailViewController() -> UIViewController {
         let view = DetailView()
-        let viewController = DetailViewController(view: view)
-//        view.delegate = viewController
+        let networkService = NetworkApiService()
+        let database = FavoriteCityRealmRepository()
+        let modelController = DetailModelController(networkService: networkService,
+                                                    database: database)
+        let viewController = DetailViewController(view: view,
+                                                  viewUpdater: view,
+                                                  modelController: modelController)
+        view.delegate = viewController
+        return viewController
+    }
+
+    func makeMapViewController() -> UIViewController {
+        let viewController = MapViewController()
         return viewController
     }
 }

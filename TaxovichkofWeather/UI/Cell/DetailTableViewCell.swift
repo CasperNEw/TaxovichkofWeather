@@ -34,8 +34,8 @@ class DetailTableViewCell: UITableViewCell {
         self.secondaryLabel.text = ""
     }
 
-    func renderCell(image: UIImage?, mainText: String, secondaryText: String) {
-        self.mainImageView?.image = image
+    func renderCell(imageURL: URL?, mainText: String, secondaryText: String) {
+        self.mainImageView.sd_setImage(with: imageURL)
         self.mainLabel?.text = mainText
         self.secondaryLabel?.text = secondaryText
     }
