@@ -12,6 +12,7 @@ Create an application (the design does not matter) to display the weather.
 ------------------------------------------------------------------------------
 Dark Sky has joined Apple and will no longer accept new signups. =/
 So I chose the API OpenWeather.
+
 ------------------------------------------------------------------------------
 
 To create the application, I used the frameworks 'SwiftLint', 'RealmSwift', 'SDWebImage' and 'GoogleMaps'.
