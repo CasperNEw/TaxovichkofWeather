@@ -12,6 +12,7 @@ protocol MapModelControllerProtocol {
     func getWeatherByCoordinates(latitude: String, longitude: String,
                                  completion: @escaping (Result<WeatherByCoorinates?, Error>) -> Void)
     func createURLStringForIcon(icon: String) -> String
+    func checkForExpiredData(completion: @escaping (Error?) -> Void)
 }
 
 class MapModelController: MapModelControllerProtocol {
@@ -60,5 +61,13 @@ class MapModelController: MapModelControllerProtocol {
 
     func createURLStringForIcon(icon: String) -> String {
         return networkService.createURLStringForIcon(icon: icon)
+    }
+
+    func checkForExpiredData(completion: @escaping (Error?) -> Void) {
+        do {
+            try database.checkForExpiredData()
+        } catch {
+            completion(error)
+        }
     }
 }

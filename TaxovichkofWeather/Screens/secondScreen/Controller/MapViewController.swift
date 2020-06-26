@@ -32,9 +32,10 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         createMap(coordinates)
+        checkForExpiredData()
     }
 
-    func createMap(_ coordinates: Coordinates?) {
+    private func createMap(_ coordinates: Coordinates?) {
 
         let camera = GMSCameraPosition.camera(withLatitude: coordinates?.latitude ?? -33.86,
                                               longitude: coordinates?.longitude ?? 151.20,
@@ -46,6 +47,14 @@ class MapViewController: UIViewController {
         mapView.settings.compassButton = true
         self.view.addSubview(mapView)
     }
+
+    private func checkForExpiredData() {
+        modelController.checkForExpiredData { [weak self] error in
+            if error != nil {
+                self?.showAlert(with: "Error", and: RealmError.readWriteError.localizedDescription)
+            }
+        }
+    }
 }
 
 // MARK: GMSMapViewDelegate
@@ -55,19 +64,19 @@ extension MapViewController: GMSMapViewDelegate {
         setupAndPresentPopOverVC()
         modelController
             .getWeatherByCoordinates(latitude: String(coordinate.latitude),
-                                     longitude: String(coordinate.longitude)) { result in
+                                     longitude: String(coordinate.longitude)) { [weak self] result in
                                         switch result {
                                         case .success(let weather):
                                             guard let weather = weather else { return }
-                                            let imageURL = self.modelController
-                                                .createURLStringForIcon(icon: weather.icon)
-                                            self.popOver.setData(imageURL: URL(string: imageURL),
+                                            guard let imageURL = self?.modelController
+                                                .createURLStringForIcon(icon: weather.icon) else { return }
+                                            self?.popOver.setData(imageURL: URL(string: imageURL),
                                                                   mainText: String((weather.temp*10)
                                                                     .rounded(.towardZero)/10) + "℃",
                                                                   descriptionText: weather.description,
                                                                   name: weather.name)
                                         case .failure(let error):
-                                            self.popOver.dismiss()
+                                            self?.popOver.dismiss()
                                             print(error)
                                         }
         }
