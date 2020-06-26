@@ -11,14 +11,11 @@ import Foundation
 // MARK: - Weather
 struct CityWeatherFromServer: Codable {
     let lat, lon: Double
-    let timezone: String
-    let timezoneOffset: Int
     let current: Current
     let daily: [Daily]
 
     enum CodingKeys: String, CodingKey {
-        case lat, lon, timezone
-        case timezoneOffset = "timezone_offset"
+        case lat, lon
         case current, daily
     }
 }
@@ -54,58 +51,31 @@ extension CityWeatherFromServer {
 
 // MARK: - Current
 struct Current: Codable {
-    let timeData, sunrise, sunset: Int
-    let temp, feelsLike: Double // temp
-    let pressure, humidity: Int
-    let dewPoint, uvi: Double
-    let clouds, visibility, windSpeed, windDeg: Int
-    let weather: [Weather] // !
+    let timeData: Int
+    let temp: Double
+    let weather: [Weather]
 
     enum CodingKeys: String, CodingKey {
         case timeData = "dt"
-        case sunrise, sunset, temp
-        case feelsLike = "feels_like"
-        case pressure, humidity
-        case dewPoint = "dew_point"
-        case uvi, clouds, visibility
-        case windSpeed = "wind_speed"
-        case windDeg = "wind_deg"
+        case temp
         case weather
     }
 }
 
 // MARK: - Daily
 struct Daily: Codable {
-    let timeData, sunrise, sunset: Int // dataTime
-    let temp: Temp // беру daу temp!
-    let feelsLike: FeelsLike
-    let pressure, humidity: Int
-    let dewPoint, windSpeed: Double
-    let windDeg: Int
-    let weather: [Weather] // !
-    let clouds: Int
-    let uvi: Double
-    let rain: Double?
+    let timeData: Int
+    let temp: Temp
+    let weather: [Weather]
 
     enum CodingKeys: String, CodingKey {
         case timeData = "dt"
-        case sunrise, sunset, temp
-        case feelsLike = "feels_like"
-        case pressure, humidity
-        case dewPoint = "dew_point"
-        case windSpeed = "wind_speed"
-        case windDeg = "wind_deg"
-        case weather, clouds, uvi, rain
+        case temp
+        case weather
     }
-}
-
-// MARK: - FeelsLike
-struct FeelsLike: Codable {
-    let day, night, eve, morn: Double
 }
 
 // MARK: - Temp
 struct Temp: Codable {
-    let day, min, max, night: Double
-    let eve, morn: Double
+    let day: Double
 }

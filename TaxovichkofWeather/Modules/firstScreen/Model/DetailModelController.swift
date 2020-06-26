@@ -26,19 +26,7 @@ class DetailModelController: DetailModelControllerProtocol {
     }
 
     func updateAndGetFavoriteCities(completion: @escaping (Result<[FavoriteCity], Error>) -> Void) {
-        getWeatherOfFavoriteCitiesFromApi { error in
-            if let error = error {
-                completion(.failure(error))
-                return
-            }
-        }
-        do {
-            let favorites = try database.getAllFavoritesCity()
-            completion(.success(favorites.map { $0.toModel() }))
-        } catch {
-            completion(.failure(error))
-            return
-        }
+        getWeatherOfFavoriteCitiesFromApi { completion($0) }
     }
 
     func getFavoriteCities(completion: @escaping (Result<[FavoriteCity], Error>) -> Void) {
@@ -51,30 +39,12 @@ class DetailModelController: DetailModelControllerProtocol {
         }
 
         do {
-            var favorites = try database.getAllFavoritesCity()
+            let favorites = try database.getAllFavoritesCity()
             if favorites.first?.currentWeather == nil {
-                let workItem = DispatchWorkItem {
-                    self.getWeatherOfFavoriteCitiesFromApi { error in
-                        if let error = error {
-                            DispatchQueue.main.async {
-                                completion(.failure(error))
-                                return
-                            }
-                        }
-                    }
-                }
-                workItem.notify(queue: DispatchQueue.main) {
-                    do {
-                        favorites = try self.database.getAllFavoritesCity()
-                        completion(.success(favorites.map { $0.toModel() }))
-                    } catch {
-                        completion(.failure(error))
-                        return
-                    }
-                }
-                DispatchQueue.global().async(execute: workItem)
+                self.getWeatherOfFavoriteCitiesFromApi { completion($0) }
+                return
             } else {
-                completion(.success(favorites.map { $0.toModel() }))
+                completion(.success(favorites.map { $0.toModel()}))
                 return
             }
         } catch {
@@ -112,31 +82,38 @@ class DetailModelController: DetailModelControllerProtocol {
         }
     }
 
-    private func getWeatherOfFavoriteCitiesFromApi(completion: @escaping (Error?) -> Void) {
+    private func getWeatherOfFavoriteCitiesFromApi(completion: @escaping (Result<[FavoriteCity], Error>) -> Void) {
         do {
             let favorites = try database.getAllFavoritesCity()
+            var operationCounter = 0
             favorites.forEach { cityRealm in
                 let city = cityRealm.toModel()
-                networkService.getCityWeather(latitude: String(city.latitude),
-                                              longitude: String(city.longitude)) { result in
-                                                switch result {
-                                                case .success(let data):
-                                                    let current = data.currentToModel(cityId: city.cityId)
-                                                    let daily = data.dailyToModel(cityId: city.cityId)
-                                                    do {
-                                                        try self.database.updateWeather(cityId: city.cityId,
-                                                                                            current: current,
-                                                                                            daily: daily)
-                                                    } catch {
-                                                        completion(error)
-                                                    }
-                                                case .failure(let error):
-                                                    completion(error)
+                self.networkService
+                    .getCityWeather(latitude: String(city.latitude),
+                                    longitude: String(city.longitude)) { result in
+                                        switch result {
+                                        case .success(let data):
+                                            let current = data.currentToModel(cityId: city.cityId)
+                                            let daily = data.dailyToModel(cityId: city.cityId)
+                                            do {
+                                                try self.database.updateWeather(cityId: city.cityId,
+                                                                                current: current,
+                                                                                daily: daily)
+                                                operationCounter += 1
+                                                if operationCounter == favorites.count {
+                                                    let newFavorites = try self.database.getAllFavoritesCity()
+                                                    completion(.success(newFavorites.map { $0.toModel() }))
                                                 }
+                                            } catch {
+                                                completion(.failure(RealmError.readWriteError))
+                                            }
+                                        case .failure(let error):
+                                            completion(.failure(error))
+                                        }
                 }
             }
         } catch {
-            completion(error)
+            completion(.failure(error))
         }
     }
 }

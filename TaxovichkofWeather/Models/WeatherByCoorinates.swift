@@ -1,20 +1,21 @@
 //
-//  FavoriteCity.swift
+//  WeatherByCoorinates.swift
 //  TaxovichkofWeather
 //
-//  Created by Дмитрий Константинов on 23.06.2020.
+//  Created by Дмитрий Константинов on 25.06.2020.
 //  Copyright © 2020 Дмитрий Константинов. All rights reserved.
 //
 
 import Foundation
 
-struct FavoriteCity {
+struct WeatherByCoorinates {
 
     let cityId: Int
     let name: String
     let longitude: Double
     let latitude: Double
-
-    var currentWeather: CityWeather?
-    var dailyWeather: [CityWeather]
+    let forecastDate: Int
+    let icon: String
+    let temp: Double
+    let description: String
 }

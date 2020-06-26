@@ -25,9 +25,7 @@ protocol DetailViewUpdater {
 
 class DetailView: UIView {
 
-    private let statusImageView = UIImageView()
-    private let statusLabel = UILabel()
-    private let descriptionLabel = UILabel()
+    private let statusView = CurrentWeatherView()
     private let segmentedLine = UISegmentedControl()
     private let tableView = UITableView(frame: CGRect.zero, style: .plain)
     private let spinner = UIActivityIndicatorView(style: .large)
@@ -51,26 +49,11 @@ class DetailView: UIView {
     }
 
     private func setupViews() {
-        statusImageView.translatesAutoresizingMaskIntoConstraints = false
-        statusImageView.contentMode = .scaleAspectFit
-        addSubview(statusImageView)
-
-        statusLabel.translatesAutoresizingMaskIntoConstraints = false
-        statusLabel.textAlignment = .center
-        statusLabel.font = .systemFont(ofSize: 35, weight: .medium)
-        statusLabel.adjustsFontSizeToFitWidth = true
-        statusLabel.sizeToFit()
-        addSubview(statusLabel)
-
-        descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
-        descriptionLabel.textAlignment = .center
-        descriptionLabel.font = .systemFont(ofSize: 20, weight: .medium)
-        descriptionLabel.adjustsFontSizeToFitWidth = true
-        descriptionLabel.sizeToFit()
-        addSubview(descriptionLabel)
+        statusView.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(statusView)
 
         spinner.translatesAutoresizingMaskIntoConstraints = false
-        spinner.tintColor = #colorLiteral(red: 0.2936717272, green: 0.7476478219, blue: 0.2609704435, alpha: 0.6951519692)
+        spinner.color = #colorLiteral(red: 0.2936717272, green: 0.7476478219, blue: 0.2609704435, alpha: 0.6951519692)
         spinner.startAnimating()
         addSubview(spinner)
 
@@ -84,7 +67,7 @@ class DetailView: UIView {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.refreshControl = UIRefreshControl()
-        tableView.refreshControl?.tintColor = #colorLiteral(red: 0.4743418236, green: 0.3383454623, blue: 1, alpha: 0.5)
+        tableView.refreshControl?.tintColor = #colorLiteral(red: 0.2936717272, green: 0.7476478219, blue: 0.2609704435, alpha: 0.6951519692)
         tableView.refreshControl?.addTarget(self, action: #selector(refreshTable), for: .valueChanged)
         tableView.register(UINib(nibName: "DetailTableViewCell", bundle: nil),
                            forCellReuseIdentifier: DetailTableViewCell.reuseIdentifier)
@@ -94,25 +77,15 @@ class DetailView: UIView {
 
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            statusImageView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 20),
-            statusImageView.widthAnchor.constraint(equalToConstant: 100),
-            statusImageView.heightAnchor.constraint(equalToConstant: 100),
-            statusImageView.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: -50),
+            statusView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 20),
+            statusView.widthAnchor.constraint(equalToConstant: 200),
+            statusView.heightAnchor.constraint(equalToConstant: 150),
+            statusView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
 
-            statusLabel.widthAnchor.constraint(equalToConstant: 100),
-            statusLabel.heightAnchor.constraint(equalToConstant: 100),
-            statusLabel.topAnchor.constraint(equalTo: statusImageView.topAnchor),
-            statusLabel.leadingAnchor.constraint(equalTo: statusImageView.trailingAnchor),
-
-            descriptionLabel.topAnchor.constraint(equalTo: statusImageView.bottomAnchor),
-            descriptionLabel.leadingAnchor.constraint(equalTo: statusImageView.leadingAnchor),
-            descriptionLabel.trailingAnchor.constraint(equalTo: statusLabel.trailingAnchor),
-            descriptionLabel.heightAnchor.constraint(equalToConstant: 50),
-
-            spinner.centerYAnchor.constraint(equalTo: statusImageView.centerYAnchor),
+            spinner.centerYAnchor.constraint(equalTo: statusView.centerYAnchor),
             spinner.centerXAnchor.constraint(equalTo: self.centerXAnchor),
 
-            segmentedLine.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 25),
+            segmentedLine.topAnchor.constraint(equalTo: statusView.bottomAnchor, constant: 25),
             segmentedLine.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor),
             segmentedLine.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor),
             segmentedLine.heightAnchor.constraint(equalToConstant: 50),
@@ -167,9 +140,9 @@ extension DetailView: DetailViewUpdater {
 
     func setStatusData(imageURL: URL?, mainText: String, descriptionText: String) {
         DispatchQueue.main.async {
-            self.statusImageView.sd_setImage(with: imageURL)
-            self.statusLabel.text = mainText
-            self.descriptionLabel.text = descriptionText
+            self.statusView.imageView.sd_setImage(with: imageURL)
+            self.statusView.statusLabel.text = mainText
+            self.statusView.descriptionLabel.text = descriptionText
             self.spinner.stopAnimating()
         }
     }

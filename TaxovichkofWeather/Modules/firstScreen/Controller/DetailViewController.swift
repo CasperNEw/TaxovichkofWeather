@@ -10,6 +10,7 @@ import UIKit
 
 class DetailViewController: UIViewController {
 
+    private var viewControllerFactory: ViewControllerFactory
     private var modelController: DetailModelControllerProtocol
     private var model: [FavoriteCity]?
     private var selectedSegment: String?
@@ -18,9 +19,11 @@ class DetailViewController: UIViewController {
 
     // MARK: Init
     init(view: UIView, viewUpdater: DetailViewUpdater,
-         modelController: DetailModelControllerProtocol) {
+         modelController: DetailModelControllerProtocol,
+         viewControllerFactory: ViewControllerFactory) {
         self.viewUpdater = viewUpdater
         self.modelController = modelController
+        self.viewControllerFactory = viewControllerFactory
         super.init(nibName: nil, bundle: nil)
         self.view = view
         configure()
@@ -31,25 +34,40 @@ class DetailViewController: UIViewController {
     }
 
     private func configure() {
+        getData()
+        configureNavigationItem()
+    }
+
+    private func getData(_ afterStart: Bool = false) {
         modelController.getFavoriteCities { [weak self] result in
             switch result {
             case .success(let favorites):
                 self?.model = favorites
-                self?.viewUpdater.setupSegmentedLine(titles: favorites.map { $0.name })
+                if !afterStart {
+                    self?.viewUpdater.setupSegmentedLine(titles: favorites.map { $0.name })
+                }
                 self?.selectedSegment(title: favorites.map({ $0.name }).first)
             case .failure(let error):
                 self?.showAlert(with: "Error", and: error.localizedDescription)
             }
         }
+    }
+
+    private func configureNavigationItem() {
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "map"),
                                                             style: .plain, target: self,
                                                             action: #selector(mapButtonTapped))
         navigationItem.rightBarButtonItem?.tintColor = .lightGray
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain,
+                                                           target: nil, action: nil)
+        navigationItem.backBarButtonItem?.tintColor = .lightGray
     }
 
     @objc private func mapButtonTapped() {
-        print(#function)
+        let currentCoordinates = model?.filter { $0.name == selectedSegment }.first?.toCoordinates()
+        let viewController = viewControllerFactory.makeMapViewController(with: currentCoordinates)
+        navigationController?.pushViewController(viewController, animated: true)
     }
 }
 
@@ -79,6 +97,9 @@ extension DetailViewController: DetailViewDelegate {
         guard let weather = model?
             .filter({ $0.name == title })
             .first?.currentWeather else {
+                showAlert(with: "Oops", and: "There is no required data to display. I repeat the request") {
+                    self.getData(true)
+                }
                 return
         }
 

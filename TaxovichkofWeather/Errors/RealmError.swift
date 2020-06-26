@@ -12,6 +12,7 @@ enum RealmError: Error {
     case createFavoriteError
     case findFavoriteError
     case expiredDataError
+    case readWriteError
 }
 
 extension RealmError: LocalizedError {
@@ -22,7 +23,9 @@ extension RealmError: LocalizedError {
         case .findFavoriteError:
             return "Error finding your favorite city in the database. If reappeared, contact software developer"
         case .expiredDataError:
-            return "Error validating data. If appears again, contact software developer."
+            return "Read/write data Error. If appears again, contact software developer."
+        case .readWriteError:
+            return ""
         }
     }
 }

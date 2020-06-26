@@ -18,13 +18,21 @@ class ViewControllerFactory {
                                                     database: database)
         let viewController = DetailViewController(view: view,
                                                   viewUpdater: view,
-                                                  modelController: modelController)
+                                                  modelController: modelController,
+                                                  viewControllerFactory: self)
         view.delegate = viewController
         return viewController
     }
 
-    func makeMapViewController() -> UIViewController {
-        let viewController = MapViewController()
+    func makeMapViewController(with coordinates: Coordinates?) -> UIViewController {
+        let networkService = NetworkApiService()
+        let database = CoordsWeatherRepository()
+        let modelController = MapModelController(networkService: networkService,
+                                                 database: database)
+        let popOverViewController = CurrentWeatherViewController()
+        let viewController = MapViewController(coordinates: coordinates,
+                                               modelController: modelController,
+                                               popOver: popOverViewController)
         return viewController
     }
 }
