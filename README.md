@@ -2,10 +2,18 @@
 
 Test task from the company "Taxovichkof"
 
-You must create an application to display the weather.
-- On the first screen should be two tabs (cities) and below the list of weather by days. 
-- On the second screen, a map and the ability to download weather data at a specific point, add a location function.
+Create an application (the design does not matter) to display the weather.
 
-- All downloaded data should be cached and used within 1 hour. Google map is used as a map.
+- The first screen: two tabs St. Petersburg and Moscow, in which the list displays the weather by day, header - it displays the current weather for the selected tab.
+- Second screen: Google Maps map, when you click on the map, load and display the weather at this point. Add Current Location Function
 
-API - darksky net
+- All downloaded data must be cached and used within 1 hour. API - darksky net
+
+------------------------------------------------------------------------------
+
+To create the application, I used the frameworks 'SwiftLint', 'RealmSwift', 'SDWebImage' and 'GoogleMaps'.
+It took me about 25-30 hours to create, debug, test and speed up the application.
+This was my first experience with google maps and my first experience writing "complex" data processing logic.
+It was cool! )
+
+<img src="/source/firstScreen.jpg" alt="first screen"/> <img src="/source/secondScreen.jpg" alt="second screen"/>
