@@ -10,6 +10,9 @@ Create an application (the design does not matter) to display the weather.
 - All downloaded data must be cached and used within 1 hour. API - darksky net
 
 ------------------------------------------------------------------------------
+Dark Sky has joined Apple and will no longer accept new signups. =/
+So I chose the API OpenWeather.
+------------------------------------------------------------------------------
 
 To create the application, I used the frameworks 'SwiftLint', 'RealmSwift', 'SDWebImage' and 'GoogleMaps'.
 It took me about 25-30 hours to create, debug, test and speed up the application.
