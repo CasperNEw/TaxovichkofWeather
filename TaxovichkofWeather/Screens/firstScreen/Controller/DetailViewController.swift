@@ -38,7 +38,7 @@ class DetailViewController: UIViewController {
         configureNavigationItem()
     }
 
-    private func getData(_ afterStart: Bool = false) {
+    func getData(_ afterStart: Bool = false) {
         modelController.getFavoriteCities { [weak self] result in
             switch result {
             case .success(let favorites):

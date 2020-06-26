@@ -7,14 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7EE93C99668478CF6F612581 /* Pods_TaxovichkofWeatherTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D296384F5785477ACE63BF3 /* Pods_TaxovichkofWeatherTests.framework */; };
 		AA60B0094C0AC22C1FD9523A /* Pods_TaxovichkofWeather.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91C5BAC961BE580B64A319E7 /* Pods_TaxovichkofWeather.framework */; };
 		DA446CCB24A1FA16009A099F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA446CCA24A1FA16009A099F /* AppDelegate.swift */; };
 		DA446CCD24A1FA16009A099F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA446CCC24A1FA16009A099F /* SceneDelegate.swift */; };
 		DA446CCF24A1FA16009A099F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA446CCE24A1FA16009A099F /* DetailViewController.swift */; };
 		DA446CD424A1FA19009A099F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA446CD324A1FA19009A099F /* Assets.xcassets */; };
 		DA446CD724A1FA19009A099F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA446CD524A1FA19009A099F /* LaunchScreen.storyboard */; };
-		DA446CE224A1FA1A009A099F /* TaxovichkofWeatherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA446CE124A1FA1A009A099F /* TaxovichkofWeatherTests.swift */; };
 		DA446CEF24A20154009A099F /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA446CEE24A20154009A099F /* DetailView.swift */; };
 		DA446CF124A2025B009A099F /* ViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA446CF024A2025B009A099F /* ViewControllerFactory.swift */; };
 		DA446CF424A20852009A099F /* NetworkApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA446CF324A20852009A099F /* NetworkApiService.swift */; };
@@ -40,10 +38,11 @@
 		DA446D2A24A51056009A099F /* WeatherByCoorinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA446D2924A51056009A099F /* WeatherByCoorinates.swift */; };
 		DA446D2C24A5154E009A099F /* CoordsWeatherRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA446D2B24A5154E009A099F /* CoordsWeatherRealm.swift */; };
 		DA446D2E24A51673009A099F /* CoordsWeatherRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA446D2D24A51673009A099F /* CoordsWeatherRepository.swift */; };
+		DAF5032224A5FF2B006CC373 /* TaxovichkofWeatherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF5032124A5FF2B006CC373 /* TaxovichkofWeatherTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		DA446CDE24A1FA1A009A099F /* PBXContainerItemProxy */ = {
+		DAF5032424A5FF2B006CC373 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = DA446CBF24A1FA16009A099F /* Project object */;
 			proxyType = 1;
@@ -65,9 +64,6 @@
 		DA446CD324A1FA19009A099F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DA446CD624A1FA19009A099F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DA446CD824A1FA19009A099F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DA446CDD24A1FA1A009A099F /* TaxovichkofWeatherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TaxovichkofWeatherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		DA446CE124A1FA1A009A099F /* TaxovichkofWeatherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxovichkofWeatherTests.swift; sourceTree = "<group>"; };
-		DA446CE324A1FA1A009A099F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DA446CEE24A20154009A099F /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		DA446CF024A2025B009A099F /* ViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerFactory.swift; sourceTree = "<group>"; };
 		DA446CF324A20852009A099F /* NetworkApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkApiService.swift; sourceTree = "<group>"; };
@@ -93,6 +89,9 @@
 		DA446D2924A51056009A099F /* WeatherByCoorinates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherByCoorinates.swift; sourceTree = "<group>"; };
 		DA446D2B24A5154E009A099F /* CoordsWeatherRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordsWeatherRealm.swift; sourceTree = "<group>"; };
 		DA446D2D24A51673009A099F /* CoordsWeatherRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordsWeatherRepository.swift; sourceTree = "<group>"; };
+		DAF5031F24A5FF2B006CC373 /* TF WeatherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TF WeatherTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DAF5032124A5FF2B006CC373 /* TaxovichkofWeatherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxovichkofWeatherTests.swift; sourceTree = "<group>"; };
+		DAF5032324A5FF2B006CC373 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E31C99AD0F97B564022B2A90 /* Pods-TaxovichkofWeather.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaxovichkofWeather.debug.xcconfig"; path = "Target Support Files/Pods-TaxovichkofWeather/Pods-TaxovichkofWeather.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -105,11 +104,10 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DA446CDA24A1FA1A009A099F /* Frameworks */ = {
+		DAF5031C24A5FF2B006CC373 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7EE93C99668478CF6F612581 /* Pods_TaxovichkofWeatherTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,7 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				DA446CC924A1FA16009A099F /* TaxovichkofWeather */,
-				DA446CE024A1FA1A009A099F /* TaxovichkofWeatherTests */,
+				DAF5032024A5FF2B006CC373 /* TF WeatherTests */,
 				DA446CC824A1FA16009A099F /* Products */,
 				697A98929885BF439B924DE1 /* Pods */,
 				532547BA5A09C34A95F25656 /* Frameworks */,
@@ -151,7 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				DA446CC724A1FA16009A099F /* TF Weather.app */,
-				DA446CDD24A1FA1A009A099F /* TaxovichkofWeatherTests.xctest */,
+				DAF5031F24A5FF2B006CC373 /* TF WeatherTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -162,7 +160,7 @@
 				DA446CCA24A1FA16009A099F /* AppDelegate.swift */,
 				DA446CCC24A1FA16009A099F /* SceneDelegate.swift */,
 				DA446CF024A2025B009A099F /* ViewControllerFactory.swift */,
-				DA446CED24A200FA009A099F /* Modules */,
+				DA446CED24A200FA009A099F /* Screens */,
 				DA446CF224A207F6009A099F /* Services */,
 				DA446CF824A21119009A099F /* Models */,
 				DA446D0424A246B1009A099F /* Database */,
@@ -175,22 +173,13 @@
 			path = TaxovichkofWeather;
 			sourceTree = "<group>";
 		};
-		DA446CE024A1FA1A009A099F /* TaxovichkofWeatherTests */ = {
-			isa = PBXGroup;
-			children = (
-				DA446CE124A1FA1A009A099F /* TaxovichkofWeatherTests.swift */,
-				DA446CE324A1FA1A009A099F /* Info.plist */,
-			);
-			path = TaxovichkofWeatherTests;
-			sourceTree = "<group>";
-		};
-		DA446CED24A200FA009A099F /* Modules */ = {
+		DA446CED24A200FA009A099F /* Screens */ = {
 			isa = PBXGroup;
 			children = (
 				DA446D2F24A5F20F009A099F /* firstScreen */,
 				DA446D3024A5F224009A099F /* secondScreen */,
 			);
-			path = Modules;
+			path = Screens;
 			sourceTree = "<group>";
 		};
 		DA446CF224A207F6009A099F /* Services */ = {
@@ -355,6 +344,15 @@
 			path = UIKit;
 			sourceTree = "<group>";
 		};
+		DAF5032024A5FF2B006CC373 /* TF WeatherTests */ = {
+			isa = PBXGroup;
+			children = (
+				DAF5032124A5FF2B006CC373 /* TaxovichkofWeatherTests.swift */,
+				DAF5032324A5FF2B006CC373 /* Info.plist */,
+			);
+			path = "TF WeatherTests";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -379,23 +377,22 @@
 			productReference = DA446CC724A1FA16009A099F /* TF Weather.app */;
 			productType = "com.apple.product-type.application";
 		};
-		DA446CDC24A1FA1A009A099F /* TaxovichkofWeatherTests */ = {
+		DAF5031E24A5FF2B006CC373 /* TF WeatherTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = DA446CE924A1FA1A009A099F /* Build configuration list for PBXNativeTarget "TaxovichkofWeatherTests" */;
+			buildConfigurationList = DAF5032624A5FF2B006CC373 /* Build configuration list for PBXNativeTarget "TF WeatherTests" */;
 			buildPhases = (
-				7E064A2AB2FE4531FA531964 /* [CP] Check Pods Manifest.lock */,
-				DA446CD924A1FA1A009A099F /* Sources */,
-				DA446CDA24A1FA1A009A099F /* Frameworks */,
-				DA446CDB24A1FA1A009A099F /* Resources */,
+				DAF5031B24A5FF2B006CC373 /* Sources */,
+				DAF5031C24A5FF2B006CC373 /* Frameworks */,
+				DAF5031D24A5FF2B006CC373 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				DA446CDF24A1FA1A009A099F /* PBXTargetDependency */,
+				DAF5032524A5FF2B006CC373 /* PBXTargetDependency */,
 			);
-			name = TaxovichkofWeatherTests;
-			productName = TaxovichkofWeatherTests;
-			productReference = DA446CDD24A1FA1A009A099F /* TaxovichkofWeatherTests.xctest */;
+			name = "TF WeatherTests";
+			productName = "TF WeatherTests";
+			productReference = DAF5031F24A5FF2B006CC373 /* TF WeatherTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -411,7 +408,7 @@
 					DA446CC624A1FA16009A099F = {
 						CreatedOnToolsVersion = 11.2;
 					};
-					DA446CDC24A1FA1A009A099F = {
+					DAF5031E24A5FF2B006CC373 = {
 						CreatedOnToolsVersion = 11.2;
 						TestTargetID = DA446CC624A1FA16009A099F;
 					};
@@ -431,7 +428,7 @@
 			projectRoot = "";
 			targets = (
 				DA446CC624A1FA16009A099F /* TaxovichkofWeather */,
-				DA446CDC24A1FA1A009A099F /* TaxovichkofWeatherTests */,
+				DAF5031E24A5FF2B006CC373 /* TF WeatherTests */,
 			);
 		};
 /* End PBXProject section */
@@ -447,7 +444,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DA446CDB24A1FA1A009A099F /* Resources */ = {
+		DAF5031D24A5FF2B006CC373 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -489,28 +486,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TaxovichkofWeather/Pods-TaxovichkofWeather-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		7E064A2AB2FE4531FA531964 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-TaxovichkofWeatherTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		83F19242D3B71E663A953228 /* [CP] Check Pods Manifest.lock */ = {
@@ -589,21 +564,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DA446CD924A1FA1A009A099F /* Sources */ = {
+		DAF5031B24A5FF2B006CC373 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA446CE224A1FA1A009A099F /* TaxovichkofWeatherTests.swift in Sources */,
+				DAF5032224A5FF2B006CC373 /* TaxovichkofWeatherTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		DA446CDF24A1FA1A009A099F /* PBXTargetDependency */ = {
+		DAF5032524A5FF2B006CC373 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = DA446CC624A1FA16009A099F /* TaxovichkofWeather */;
-			targetProxy = DA446CDE24A1FA1A009A099F /* PBXContainerItemProxy */;
+			targetProxy = DAF5032424A5FF2B006CC373 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -771,49 +746,43 @@
 			};
 			name = Release;
 		};
-		DA446CEA24A1FA1A009A099F /* Debug */ = {
+		DAF5032724A5FF2B006CC373 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8CB2E22FD837CBBA773A5F90 /* Pods-TaxovichkofWeatherTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V343AH88RK;
-				INFOPLIST_FILE = TaxovichkofWeatherTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				INFOPLIST_FILE = "TF WeatherTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = CasperNEw.TaxovichkofWeatherTests;
+				PRODUCT_BUNDLE_IDENTIFIER = "CasperNEw.TF-WeatherTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TaxovichkofWeather.app/TaxovichkofWeather";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TF Weather.app/TF Weather";
 			};
 			name = Debug;
 		};
-		DA446CEB24A1FA1A009A099F /* Release */ = {
+		DAF5032824A5FF2B006CC373 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5904736ACAB41D5A315E3D3F /* Pods-TaxovichkofWeatherTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V343AH88RK;
-				INFOPLIST_FILE = TaxovichkofWeatherTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				INFOPLIST_FILE = "TF WeatherTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = CasperNEw.TaxovichkofWeatherTests;
+				PRODUCT_BUNDLE_IDENTIFIER = "CasperNEw.TF-WeatherTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TaxovichkofWeather.app/TaxovichkofWeather";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TF Weather.app/TF Weather";
 			};
 			name = Release;
 		};
@@ -838,11 +807,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		DA446CE924A1FA1A009A099F /* Build configuration list for PBXNativeTarget "TaxovichkofWeatherTests" */ = {
+		DAF5032624A5FF2B006CC373 /* Build configuration list for PBXNativeTarget "TF WeatherTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				DA446CEA24A1FA1A009A099F /* Debug */,
-				DA446CEB24A1FA1A009A099F /* Release */,
+				DAF5032724A5FF2B006CC373 /* Debug */,
+				DAF5032824A5FF2B006CC373 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
