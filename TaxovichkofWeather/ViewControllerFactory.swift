@@ -8,19 +8,19 @@
 
 import UIKit
 
-class ViewControllerFactory {
+protocol ViewControllerFactoryProtocol {
+    func makeMapViewController(with coordinates: Coordinates?) -> UIViewController
+}
+
+class ViewControllerFactory: ViewControllerFactoryProtocol {
 
     func makeDetailViewController() -> UIViewController {
-        let view = DetailView()
         let networkService = NetworkApiService()
         let database = FavoriteCityRealmRepository()
         let modelController = DetailModelController(networkService: networkService,
                                                     database: database)
-        let viewController = DetailViewController(view: view,
-                                                  viewUpdater: view,
-                                                  modelController: modelController,
+        let viewController = DetailViewController(modelController: modelController,
                                                   viewControllerFactory: self)
-        view.delegate = viewController
         return viewController
     }
 

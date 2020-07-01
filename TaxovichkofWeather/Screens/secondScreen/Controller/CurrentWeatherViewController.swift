@@ -45,6 +45,7 @@ class CurrentWeatherViewController: UIViewController {
         spinner.color = #colorLiteral(red: 0.2941176471, green: 0.7476478219, blue: 0.2609704435, alpha: 0.7043011558)
         spinner.startAnimating()
         view.addSubview(spinner)
+        view.backgroundColor = #colorLiteral(red: 0.6329556704, green: 0.813773632, blue: 0.9472417235, alpha: 0.5)
     }
 
     private func setupConstraints() {

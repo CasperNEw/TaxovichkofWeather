@@ -10,27 +10,36 @@ import UIKit
 
 class DetailViewController: UIViewController {
 
-    private var viewControllerFactory: ViewControllerFactory
+    private var viewControllerFactory: ViewControllerFactoryProtocol
     private var modelController: DetailModelControllerProtocol
     private var model: [FavoriteCity]?
     private var selectedSegment: String?
-    private var viewUpdater: DetailViewUpdater
     private let formatter = DateFormatter()
 
     // MARK: Init
-    init(view: UIView, viewUpdater: DetailViewUpdater,
-         modelController: DetailModelControllerProtocol,
-         viewControllerFactory: ViewControllerFactory) {
-        self.viewUpdater = viewUpdater
+    init(modelController: DetailModelControllerProtocol,
+         viewControllerFactory: ViewControllerFactoryProtocol) {
         self.modelController = modelController
         self.viewControllerFactory = viewControllerFactory
         super.init(nibName: nil, bundle: nil)
-        self.view = view
-        configure()
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    override func loadView() {
+        self.view = DetailView(delegate: self)
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        configure()
+    }
+
+    private func view() -> DetailViewUpdater? {
+       return self.view as? DetailViewUpdater
     }
 
     private func configure() {
@@ -44,7 +53,7 @@ class DetailViewController: UIViewController {
             case .success(let favorites):
                 self?.model = favorites
                 if !afterStart {
-                    self?.viewUpdater.setupSegmentedLine(titles: favorites.map { $0.name })
+                    self?.view()?.setupSegmentedLine(titles: favorites.map { $0.name })
                 }
                 self?.selectedSegment(title: favorites.map({ $0.name }).first)
             case .failure(let error):
@@ -104,10 +113,10 @@ extension DetailViewController: DetailViewDelegate {
         }
 
         let imageURL = modelController.createURLStringForIcon(icon: weather.icon)
-        viewUpdater.setStatusData(imageURL: URL(string: imageURL),
+        view()?.setStatusData(imageURL: URL(string: imageURL),
                                    mainText: String((weather.temp*10).rounded(.towardZero)/10) + "℃",
                                    descriptionText: weather.description.uppercased())
-        viewUpdater.reloadTable()
+        view()?.reloadTable()
     }
 
     func refreshTable() {
@@ -115,10 +124,10 @@ extension DetailViewController: DetailViewDelegate {
             switch result {
             case .success(let favorites):
                 self?.model = favorites
-                self?.viewUpdater.endRefreshing()
-                self?.viewUpdater.reloadTable()
+                self?.view()?.endRefreshing()
+                self?.view()?.reloadTable()
             case .failure(let error):
-                self?.viewUpdater.endRefreshing()
+                self?.view()?.endRefreshing()
                 self?.showAlert(with: "Error", and: error.localizedDescription)
             }
         }
