@@ -19,11 +19,21 @@ class CurrentWeatherViewController: UIViewController {
     private let nameLabel = UILabel()
     private let spinner = UIActivityIndicatorView(style: .large)
 
+    private var didSetupConstraints = false
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setup()
-        setupConstraints()
+    }
+
+    override func updateViewConstraints() {
+
+        if !didSetupConstraints {
+            setupConstraints()
+            didSetupConstraints = true
+        }
+        super.updateViewConstraints()
     }
 
     override func viewWillAppear(_ animated: Bool) {

@@ -32,6 +32,8 @@ class DetailView: UIView {
 
     weak var delegate: DetailViewDelegate?
 
+    private var didSetupConstraints = false
+
     override init(frame: CGRect) {
         super.init(frame: frame)
 
@@ -48,9 +50,13 @@ class DetailView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        setupConstraints()
+    override func updateConstraints() {
+
+        if !didSetupConstraints {
+            setupConstraints()
+            didSetupConstraints = true
+        }
+        super.updateConstraints()
     }
 
     private func setupViews() {
